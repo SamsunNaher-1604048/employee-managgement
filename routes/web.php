@@ -80,7 +80,8 @@ Route::post('/update/user/{id}',[UserController::class,'updateuser'])->name('use
 
 //leave controller
 Route::post('/leave_apply',[LeaveController::class,'leaveapply'])->name('leaveapply');
-Route::post('/leave_approve/{id}',[LeaveController::class,'leaveapprove'])->name('leave.approve');
+Route::get('/leave_approve/{id}',[LeaveController::class,'leaveapprove'])->name('leave.approve');
+Route::post('/leave_approve/{id}',[LeaveController::class,'leaveapprovestatus'])->name('leave.approve.status');
 
 
 

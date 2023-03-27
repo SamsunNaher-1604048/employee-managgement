@@ -35,7 +35,7 @@ class ShowApplicationController extends Controller
        
         $report = User::select('name','signature')->where('employee_id',$user->repoting_boss)->first();
 
-        $department_head = User::select('name','signature')->where('employee_id',$leave_approve->department_head)->first();
+        $department_head = User::select('name','signature')->where('employee_id',$user->department_head)->first();
 
         $hr = User::select('name','signature')->where('designation', 1)->first();
         
@@ -56,12 +56,13 @@ class ShowApplicationController extends Controller
                                 ->join('departments','departments.id','=','users.department_id')
                                 ->select('users.*', 'leave_applies.*', 'leave_approves.*','designations.designation as userdesignation','departments.name as deparetmentName')
                                 ->get();
-            
+
                
             return view('pages.allleavetable',['datas'=>$notifications_HR]);
         }
         else{
-            $department_head = Department::select("head_of_dep")->where('head_of_dep', Auth::user()->employee_id)->first();
+            $department_head = User::select("department_head")->where('department_head', Auth::user()->employee_id)->first();
+
             if($department_head != null){
                $notifications_head = DB::table('leave_approves')
                                 ->join('leave_applies', 'leave_applies.id', '=', 'leave_approves.leave_id')
@@ -86,6 +87,7 @@ class ShowApplicationController extends Controller
                                     ->where('leave_approves.reporting_boss',Auth::user()->employee_id)
                                     ->select('users.*', 'leave_applies.*', 'leave_approves.*','designations.designation as userdesignation','departments.name as deparetmentName')
                                     ->get();
+
 
                 return view('pages.allleavetable',['datas'=>$notifications_report]);
 

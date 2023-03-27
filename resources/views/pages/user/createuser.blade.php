@@ -5,6 +5,7 @@
     <div class="titlebox mt-4 mb-4 ml-3 mr-3">
         <p class="p-2">Create Employee</p>
     </div>
+     
     <form action="{{route('user.store')}}" method="post"  enctype="multipart/form-data">
         @csrf
         <div class="row ">
@@ -13,7 +14,12 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <label for="employee_id">Enter Employee ID:</label><br>
-                    <input type="text" name="employee_id" class="form-control"required>
+                    <input type="text" name="employee_id" class="form-control" required>
+                    <span class="text-danger">
+                        @error('employee_id')
+                           {{$message}}
+                        @enderror
+                    </span>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <label for="name">Enter Employee Name:</label><br>
@@ -26,6 +32,11 @@
                 <div class="col-md-6 col-sm-12">
                     <label for="email">Enter Employee Email:</label><br>
                     <input type="email" name="email" class="form-control">
+                    <span class="text-danger">
+                        @error('email')
+                           {{$message}}
+                        @enderror
+                    </span>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <label for="phone">Enter Employee Phone No:</label><br>
@@ -82,6 +93,12 @@
                         @endforeach
                         <option selected value = 0>No Designation</option> 
                     </select>
+
+                    <span class="text-danger">
+                        @error('designation')
+                           {{$message}}
+                        @enderror
+                    </span>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <label for="status">Enter Employee Role:</label><br>
@@ -109,20 +126,35 @@
                 </div>
 
                 <div class="col-md-6 col-sm-12">
+                    <label for="repoting_boss">Enter Employee Department Head:</label><br>
+                    <select class="form-control" name="department_head" id="select5">
+                        @foreach ($department_head as $head)
+                            <option value={{$head->employee_id}}>{{$head->name}}</option> 
+                       @endforeach
+                            <option selected value="0">No Department Head </option>
+                     </select>
+                </div>
+            </div>
+
+            {{-- password and status--}}
+            
+            <div class="row mt-3">
+                <div class="col-md-6 col-sm-12">
+                    <label for="password">Enter Employee password</label><br>
+                    <input type="text" name="password" class="form-control">
+                    <span class="text-danger">
+                        @error('password')
+                           {{$message}}
+                        @enderror
+                    </span>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
                     <label for="repoting_boss">Enter Employee Status:</label><br>
                     <select class="form-select" aria-label="Default select example" name='status' >
                         <option value="Active">Active</option>
                         <option value="Inactive">Inactive</option>
                       </select>
-                </div>
-            </div>
-
-            {{-- password --}}
-            
-            <div class="row mt-3">
-                <div class="col-md-6 col-sm-12">
-                    <label for="password">Enter Employee password</label><br>
-                    <input type="text" name="password" class="form-control" required>
                 </div>
             </div>
            
@@ -164,7 +196,8 @@
 <script>
     $('#select2').select2();
     $('#select3').select2();
-    $('#select4').select2()
+    $('#select4').select2();
+    $('#select5').select2();
 </script>
 
 

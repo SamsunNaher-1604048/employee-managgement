@@ -30,7 +30,7 @@
                     <td>{{$data->status}}</td>
                     <td>{{$data->conpany_name}}</th>
                     <td>{{$data->department_name}}</th>
-                    @if($data->profile_pic==" ")
+                    @if($data->profile_pic== null)
                         <td><p>No Image</p></th> 
                     
                     @else

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->date('date_of_birth')->nullable();
             $table->string('gender')->nullable();
             $table->integer('department_id')->nullable();
+            $table->integer('department_head')->nullable();
             $table->integer('company_id')->nullable();
             $table->string('designation');
             $table->string('role')->nullable();
@@ -31,7 +32,6 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->string('signature')->nullable();
             $table->string('password');
-            $table->string('image')->nullable();
             $table->string('profile_pic')->nullable();
             $table->rememberToken();
             $table->timestamps();

@@ -161,6 +161,25 @@
             </div>
 
 
+            <div class="col-md-6 col-sm-12 mt-3">
+                <label for="repoting_boss">Enter Employee Department Head:</label><br>
+                    <select class="form-control" name="department_head" id="select6">
+                     
+                        @foreach ($department_head as $head)
+
+                           @if($head->employee_id == $head->repoting_boss)
+                               <option selected  value={{$head->employee_id}}>{{$head->name}}</option>
+                           @else
+                               <option value={{$head->employee_id}}>{{$head->name}}</option> 
+                            @endif
+
+                        @endforeach
+
+                            <option {{$data->repoting_boss==0? 'selected':' '}} value="0">No Repoting Boss</option>
+                    </select>
+            </div>
+
+
             {{-- image and cv and button --}}
             <div class="mt-4">
                 <div class="row">
@@ -200,7 +219,8 @@
     $('#select2').select2();
     $('#select3').select2();
     $('#select4').select2();
-    $('#select5').select2()
+    $('#select5').select2();
+    $('#select6').select2();
 </script>
 
 @endsection

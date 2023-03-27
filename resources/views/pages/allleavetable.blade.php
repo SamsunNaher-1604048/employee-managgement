@@ -10,8 +10,9 @@
                     <th scope="col">Name</th>
                     <th scope="col">Designation</th>
                     <th scope="col">Department</th>
-                    <th scope="col">Staus Change</th>
-                    <th scope="col">Show Application</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -20,48 +21,46 @@
                         <td scope="row">{{$data->name}}</th>
                         <td>{{$data->userdesignation}}</td>
                         <td>{{$data->deparetmentName}}</td>
-                        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{$data->id}}">Change Status</button></td>
-                        <td><a type="button" class="btn btn-primary" href="{{route('application.show',$data->leave_id)}}">Show Application</a></td>
+                        <td>{{$data->status}}</td>
+                        <td>{{ \Carbon\Carbon::parse($data->created_at)->format('d/m/Y')}}</td>
+                        <td>
+                          <a type="button" class="btn btn-outline-primary" href="{{route('application.show',$data->leave_id)}}">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                          </a>
+
+                          
+                           @if(Auth::user()->employee_id == $data->reporting_boss && $data->reporting_boss_approval == null)
+                              <a type="button" class="btn btn-outline-primary" href="{{route('leave.approve',$data->leave_id)}}">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                              </a>
+                            
+                           @elseif(Auth::user()->employee_id == $data->department_head && $data->reporting_boss_approval == null)
+                              <button type="button" class="btn btn-outline-primary" disabled href="{{route('leave.approve',$data->leave_id)}}">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                              </button>
+                            
+                           @elseif(Auth::user()->employee_id == $data->department_head && $data->reporting_boss_approval == 'Approve' && $data->department_head_approval == null)
+                                <a type="button" class="btn btn-outline-primary" href="{{route('leave.approve',$data->leave_id)}}">
+                                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a>  
+
+                          @elseif(Auth::user()->employee_id == $data->hr && $data->department_head_approval == null)
+                                <button type="button" class="btn btn-outline-primary" disabled href="{{route('leave.approve',$data->leave_id)}}">
+                                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button>
+
+                          @elseif(Auth::user()->employee_id == $data->hr && $data->department_head_approval == 'Approve' && $data->hr_approval== null)
+                                <a type="button" class="btn btn-outline-primary" href="{{route('leave.approve',$data->leave_id)}}">
+                                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </a> 
+                           @endif
+
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
               </table>
         </div>
-
-        {{-- model section --}}
-
-        <div class="modal fade" id="exampleModal{{$data->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Change Status</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <form action="{{route('leave.approve',$data->leave_id)}}" method="post">
-                    @csrf
-                    <div class="mt-4">
-                      <label for="exampleFormControlTextarea1" class="form-label">Show Approval</label>
-                      <select class="form-select" aria-label=".form-select example" name="approve">
-                        <option value="Approve">Approve</option>
-                        <option value="Inapprove">Inapprove</option>
-                      </select>
-                    </div>
-
-                    <div class="mt-3">
-                      <label for="exampleFormControlTextarea1" class="form-label"> Resone Box:</label>
-                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="text"></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary mt-3">submit</button>
-                    
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-
     </div>
-
 </div>
 @endsection
