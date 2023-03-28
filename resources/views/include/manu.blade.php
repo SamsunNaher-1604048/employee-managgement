@@ -213,6 +213,45 @@
         </ul>
       </li>
 
+
+      {{-- my application --}}
+       
+      <li class="menu-item">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bx-layout"></i>
+          <div data-i18n="Layouts">My Application</div>
+        </a>
   
+        <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="{{route('allmyapplication.show')}}" class="menu-link">
+              <div data-i18n="Without menu">Show Application</div>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+
+
+      {{-- Show employee --}}
+
+      @if(Auth::user()->designation != 1)
+        <li class="menu-item">
+          <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-layout"></i>
+            <div data-i18n="Layouts">My Employee</div>
+          </a>
+    
+          <ul class="menu-sub">
+            <li class="menu-item">
+              <a href="{{route('show.employee')}}" class="menu-link">
+                <div data-i18n="Without menu">Show Employee</div>
+              </a>
+            </li>
+          </ul>
+        </li>
+      @endif
+
+
     </ul>
   </aside>

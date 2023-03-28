@@ -13,6 +13,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ShowApplicationController;
+use App\Http\Controllers\MyapplicationController;
+use App\Http\Controllers\ShowemployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,5 +94,17 @@ Route::get('/notification',[NotificationController:: class,'shownotification'])-
 //leave show controller
 Route::get('/showleave/{id}',[ShowApplicationController::class,'showapplication'])->name('application.show');
 Route::get('/all_application',[ShowApplicationController::class,'allApplicationshow'])->name('Allapplication.show');
+
+
+//my application controller
+Route::get('/all/myapplication',[MyapplicationController::class,'allshowapplication'])->name('allmyapplication.show');
+Route::get('/myapplicxation/{id}',[MyapplicationController::class,'showapplication'])->name('myapplication.show');
+
+
+// show head and reporting boss employee
+
+Route::get('/show/employee',[ShowemployeeController::class,'showemployee'])->name('show.employee');
+
+
 
 

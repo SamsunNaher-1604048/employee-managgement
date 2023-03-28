@@ -69,7 +69,6 @@ class ShowApplicationController extends Controller
                                 ->join('users', 'users.employee_id', '=', 'leave_applies.employee_id')
                                 ->join('designations','designations.id','=','users.designation')
                                 ->join('departments','departments.id','=','users.department_id')
-                                ->where('leave_approves.status','pending')
                                 ->where('leave_approves.department_head',Auth::user()->employee_id)
                                 ->select('users.*', 'leave_applies.*', 'leave_approves.*','designations.designation as userdesignation','departments.name as deparetmentName')
                                 ->get();
@@ -83,7 +82,6 @@ class ShowApplicationController extends Controller
                                     ->join('users', 'users.employee_id', '=', 'leave_applies.employee_id')
                                     ->join('designations','designations.id','=','users.designation')
                                     ->join('departments','departments.id','=','users.department_id')
-                                    ->where('leave_approves.status','pending')
                                     ->where('leave_approves.reporting_boss',Auth::user()->employee_id)
                                     ->select('users.*', 'leave_applies.*', 'leave_approves.*','designations.designation as userdesignation','departments.name as deparetmentName')
                                     ->get();
