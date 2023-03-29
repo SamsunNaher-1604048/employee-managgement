@@ -25,3 +25,12 @@ This project is helpfull for all those people who are HR in the office. Here i t
  - If any employee reporting boss , department head and HR is different person then all of them approval is needed.
  - if any of them not approve the application then the application will not go forword.
  
+
+### Technology
+- HTML
+- CSS
+- Bootstrap
+- Javascript
+- PHP
+- Laravel
+
