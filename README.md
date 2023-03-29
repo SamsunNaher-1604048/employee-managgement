@@ -21,4 +21,7 @@ This project is helpfull for all those people who are HR in the office. Here i t
  - when HR apply for leave application then it will automatically approve by HR.
  - If any employee have no Department head and no Reporting boss then leave application just need HR approve.
  - If Employee is Department Head then He just need HR approval and Department Head approval automatically given.
+ - If any employee reporting boss and department head is same then department head and HR approval is needed.
+ - If any employee reporting boss , department head and HR is different person then all of them approval is needed.
+ - if any of them not approve the application then the application will not go forword.
  
