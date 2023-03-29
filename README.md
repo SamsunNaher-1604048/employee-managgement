@@ -23,7 +23,7 @@ This project is helpfull for all those people who are HR in the office. Here i t
  - If Employee is Department Head then He just need HR approval and Department Head approval automatically given.
  - If any employee reporting boss and department head is same then department head and HR approval is needed.
  - If any employee reporting boss , department head and HR is different person then all of them approval is needed.
- - if any of them not approve the application then the application will not go forword.
+ - If any of them not approve the application then the application will not go forword.
  
 
 ### Technology
@@ -33,4 +33,10 @@ This project is helpfull for all those people who are HR in the office. Here i t
 - Javascript
 - PHP
 - Laravel
+
+### Condition
+- Fill up data in this flow company->departments->designaions->roles->Employee
+- HR designation must be 1.
+- Every onr must have a department Head
+- Every one must have a department.
 
