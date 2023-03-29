@@ -3,3 +3,4 @@
 
 # Employee Management Project
 ***
+This project is helpfull for all those people who are HR in the office. Here i try to add as much as possible frature. In this project the main Feature is Leave-management. And hrere leave management is a step by step process. Here the main actor is three person 1.HR 2.Deaprtment Head  and  3.Employee.  And in Employee part there are three type of employee 1.Normal Employee 2. Reporting boss employee and 3.Employee who has no reporting boss and department head.
