@@ -7,11 +7,18 @@ This project is helpfull for all those people who are HR in the office. Here i t
 
 
 ## Feature of This Project
- - HR can create update and show the Company, Department, Designation, Employee, and Role section
- - Active and inactive status in everys section
- - Single Auth But Multiple page view
- - Layer leave-apply section
- - Leave Managenent
+ - HR can create update and show the Company, Department, Designation, Employee, and Role section.
+ - Active and inactive status in everys section.
+ - Single Auth But Multiple page view.
+ - Layer leave-apply section.
+ - after Leave apply autonatically a leave application genetate.
+ - Leave Managenent.
+
  
  ### Leave Management
- ---
+    some conditions of Leave Managenent
+ ***
+ - when HR apply for leave application then it will automatically approve by HR.
+ - If any employee have no Department head and no Reporting boss then leave application just need HR approve.
+ - If Employee is Department Head then He just need HR approval and Department Head approval automatically given.
+ 
